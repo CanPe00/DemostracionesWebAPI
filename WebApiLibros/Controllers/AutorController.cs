@@ -35,9 +35,24 @@ namespace WebApiLibros.Controllers
             Autor autor = (from a in context.autores
                            where a.IdAutor == id
                           select a).SingleOrDefault();
+            if (autor == null)
+            {
+                return NotFound();
+            }
             return autor;
             
             //return context.autores.Find(id);
+        }
+
+        //Get por EDAD
+        [HttpGet("listado/{edad}")]//RUTA PERSONALIZADA
+        public ActionResult<IEnumerable<Autor>> GetByEdad(int Edad)
+        {
+            List<Autor> autores= (from a in context.autores
+                                 where a.Edad == Edad
+                                 select a).ToList();
+           
+            return autores;
         }
 
         [HttpPost]
