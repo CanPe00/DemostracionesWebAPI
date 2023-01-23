@@ -3,7 +3,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/medico",
+      "launchUrl": "api/clinica",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

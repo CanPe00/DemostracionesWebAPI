@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,7 +76,7 @@ namespace WSClinica.Controllers
             }
             context.Medicos.Remove(medico);
             context.SaveChanges();
-            return Ok();
+            return medico;
         }
     }
 }

@@ -35,7 +35,7 @@ namespace WSClinica.Controllers
             {
                 return NotFound();
             }
-            return Ok();
+            return paciente;
         }
 
         [HttpPost]
@@ -73,7 +73,7 @@ namespace WSClinica.Controllers
             }
             context.Pacientes.Remove(paciente);
             context.SaveChanges();
-            return Ok();
+            return paciente;
         }
     }
 }

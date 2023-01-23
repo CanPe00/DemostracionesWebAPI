@@ -9,8 +9,8 @@ namespace WSClinica.Models
         [Key]
         public int Id { get; set; }
 
-        //[Range(1, 100, ErrorMessage = "Solo se permite números entre 1 y 100")]
-        [RegularExpression("(A{3}[0-9]{3})*")]
+        [Range(1, 100, ErrorMessage = "Solo se permite números entre 1 y 100")]
+        //[RegularExpression("([A]{3}[0-9]{3})*")]
         public int Numero { get; set; }
 
         [Column(TypeName = "varchar(50)")]

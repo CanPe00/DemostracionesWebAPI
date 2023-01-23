@@ -36,7 +36,7 @@ namespace WSClinica.Controllers
             {
                 return NotFound();
             }
-            return Ok();
+            return habitacion;
         }
 
         [HttpPost]
@@ -76,7 +76,7 @@ namespace WSClinica.Controllers
             }
             context.Habitaciones.Remove(habitacion);
             context.SaveChanges();
-            return Ok();
+            return habitacion;
         }
     }
 }
