@@ -38,7 +38,7 @@ namespace WSClinica.Controllers
             {
                 return NotFound();
             }
-            return Ok();
+            return medico;
         }
 
         [HttpPost]
