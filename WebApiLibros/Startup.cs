@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebApiLibros.Data;
+using Newtonsoft.Json;
 
 namespace WebApiLibros
 {
@@ -29,6 +30,8 @@ namespace WebApiLibros
             //AGEGAR A NUESTRO EF ARA USAR INYECCION DE DEPENDENNCIAS EN LOS API-CONTROLLER
             services.AddDbContext<DBLibrosContext>(options => options.UseSqlServer(Configuration.GetConnectionString("KeyDB")));
 
+            services.AddMvc().AddNewtonsoftJson(
+                       o => o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddControllers();
         }
 

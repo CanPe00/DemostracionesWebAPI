@@ -26,7 +26,9 @@ namespace WebApiLibros.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Autor>> Get()
         {
-            return context.autores.ToList();
+            //return context.autores.ToList();
+            var result= context.autores.Include(l=>l.Libros).ToList();
+            return result;
         }
 
         [HttpGet("{id}")]

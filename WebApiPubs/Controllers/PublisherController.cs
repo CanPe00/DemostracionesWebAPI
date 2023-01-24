@@ -24,15 +24,17 @@ namespace WebApiPubs.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Publisher>> Get()
         {
-            return context.Publishers.ToList();
+            return context.Publishers.Include(x => x.Titles).ToList();
         }
 
         [HttpGet("{id}")]
         public ActionResult<Publisher> GetById(string id)
         {
-            Publisher publisher = (from p in context.Publishers
-                                   where p.PubId == id
-                                   select p).SingleOrDefault();
+            //Publisher publisher = (from p in context.Publishers
+            //                       where p.PubId == id
+            //                       select p).SingleOrDefault();
+
+            Publisher publisher = context.Publishers.Include(x=>x.Titles).FirstOrDefault(x => x.PubId == id);
 
             if (publisher == null)
             {

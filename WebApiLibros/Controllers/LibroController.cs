@@ -29,22 +29,22 @@ namespace WebApiLibros.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Libro>> Get()
         {
-            return context.libros.ToList();
+            return context.libros.Include(a => a.Autor).ToList();
 
         }
 
         [HttpGet("{id}")]
         public ActionResult<Libro> GetById(int id)
         {
-            Libro libro= (from l in context.libros
-                         where l.IdLibro == id
-                         select l).SingleOrDefault();
-
-            if (libro == null)
+            //Libro libro= (from l in context.libros
+            //             where l.IdLibro == id
+            //             select l).SingleOrDefault();
+            var resultado = context.libros.Include(x => x.Autor).FirstOrDefault(x => x.IdLibro == id);
+            if (resultado == null)
             {
                 return NotFound();
             }
-            return libro;
+            return resultado;
         }
 
         [HttpGet("listado/{idAutor}")]
