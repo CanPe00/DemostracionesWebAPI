@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WebApiLibros.Validations;
 
 namespace WebApiLibros.Models
 {
@@ -11,9 +12,11 @@ namespace WebApiLibros.Models
 
         [Column(TypeName = "varchar(50)")]
         [Required]
+        [PrimeraLetraMayAtributte]
         public string Titulo { get; set; }
 
         [Column(TypeName = "varchar(200)")]
+        [PrimeraLetraMayAtributte]
         public string Descripcion { get; set; }
         public Autor Autor { get; set; }
 
